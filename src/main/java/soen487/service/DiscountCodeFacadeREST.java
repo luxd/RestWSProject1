@@ -6,12 +6,11 @@
 package soen487.service;
 
 import soen487.DiscountCode;
-
+import javax.persistence.PersistenceContext;
 import javax.persistence.EntityManager;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-
 /**
  *
  * @author ericl
@@ -20,8 +19,8 @@ import java.util.List;
 @Path("discountcode")
 public class DiscountCodeFacadeREST extends AbstractFacade<DiscountCode> {
 
-    //@PersistenceContext(unitName = "NewTestPU")
-    private EntityManager em = EMF.createEntityManager();;
+    @PersistenceContext(unitName = "NewTestPU")
+    private EntityManager em = EMF.getEntityManager();
 
     public DiscountCodeFacadeREST() {
         super(DiscountCode.class);

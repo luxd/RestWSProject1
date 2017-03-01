@@ -8,10 +8,10 @@ package soen487.service;
 import soen487.Customer;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-
 /**
  *
  * @author ericl
@@ -20,8 +20,8 @@ import java.util.List;
 @Path("customer")
 public class CustomerFacadeREST extends AbstractFacade<Customer> {
 
-    //@PersistenceContext(unitName = "NewTestPU")
-    private EntityManager em = EMF.createEntityManager();;
+    @PersistenceContext(unitName = "NewTestPU")
+    private EntityManager em = EMF.getEntityManager();
 
     public CustomerFacadeREST() {
         super(Customer.class);

@@ -5,8 +5,8 @@
  */
 package soen487.service;
 
-import java.util.List;
 import javax.persistence.EntityManager;
+import java.util.List;
 
 /**
  *
@@ -23,15 +23,21 @@ public abstract class AbstractFacade<T> {
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
+        getEntityManager().getTransaction().begin();
         getEntityManager().persist(entity);
+        getEntityManager().getTransaction().commit();
     }
 
     public void edit(T entity) {
+        getEntityManager().getTransaction().begin();
         getEntityManager().merge(entity);
+        getEntityManager().getTransaction().commit();
     }
 
     public void remove(T entity) {
+        getEntityManager().getTransaction().begin();
         getEntityManager().remove(getEntityManager().merge(entity));
+        getEntityManager().getTransaction().commit();
     }
 
     public T find(Object id) {
