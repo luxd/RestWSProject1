@@ -24,7 +24,7 @@ import javax.persistence.CascadeType;
  * @author ericl
  */
 @Entity
-@Table(name = "customer")
+@Table(name = "customer")  //mark
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
